@@ -3,6 +3,15 @@
   import { make_title } from "./helpers.js";
   import { site } from "./stores.svelte.js";
 
+  /** @type {{
+    title?: string;
+    description?: string;
+    image?: string;
+    canonical?: string;
+    SITE_TITLE?: string;
+    SITE_URL?: string;
+    children?: any;
+}} */
   let {
     title = "",
     description = "",
@@ -68,14 +77,20 @@
 </script>
 
 <svelte:head>
-  <title>{final_title}{site.title ? ` | ${site.title}` : ""}</title>
-  <meta name="description" content={final_description} />
-  <meta property="og:title" content={final_title} />
-  <meta property="og:description" content={final_description} />
+  {#if final_title}
+    <title>{final_title}{site.title ? ` | ${site.title}` : ""}</title>
+    <meta property="og:title" content={final_title} />
+  {/if}
+  {#if final_description}
+    <meta name="description" content={final_description} />
+    <meta property="og:description" content={final_description} />
+  {/if}
   {#if image}
     <meta property="og:image" content={image} />
   {/if}
-  <meta property="og:url" content={final_canonical} />
-  <link rel="canonical" href={final_canonical} />
+  {#if final_canonical}
+    <meta property="og:url" content={final_canonical} />
+    <link rel="canonical" href={final_canonical} />
+  {/if}
   {@render children?.()}
 </svelte:head>

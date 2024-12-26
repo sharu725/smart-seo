@@ -3,8 +3,15 @@
   import { make_title } from "./helpers.js";
   import { site } from "./stores.svelte.js";
 
-  let { title, description, image, canonical, SITE_TITLE, SITE_URL, children } =
-    $props();
+  let {
+    title = "",
+    description = "",
+    image = "",
+    canonical = "",
+    SITE_TITLE = "",
+    SITE_URL = "",
+    children,
+  } = $props();
 
   if (SITE_TITLE) {
     site.title = SITE_TITLE;
@@ -34,9 +41,9 @@
     if (description) {
       return description;
     } else if (title) {
-      return `This is ${title} page ${site.title ? `from ${site.title}` : ""}.`;
+      return `This is ${title} page${site.title ? ` from ${site.title}` : ""}.`;
     } else if (get_title(title)) {
-      return `This is ${get_title(title)} page ${site.title ? `from ${site.title}` : ""}.`;
+      return `This is ${get_title(title)} page${site.title ? ` from ${site.title}` : ""}.`;
     } else {
       return "";
     }
@@ -61,14 +68,14 @@
 </script>
 
 <svelte:head>
-  <title>{final_title} {site.title ? `| ${site.title}` : ""}</title>
+  <title>{final_title}{site.title ? ` | ${site.title}` : ""}</title>
   <meta name="description" content={final_description} />
   <meta property="og:title" content={final_title} />
   <meta property="og:description" content={final_description} />
   {#if image}
     <meta property="og:image" content={image} />
   {/if}
-  <meta property="og:url" content={page.url} />
+  <meta property="og:url" content={final_canonical} />
   <link rel="canonical" href={final_canonical} />
   {@render children?.()}
 </svelte:head>

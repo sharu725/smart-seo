@@ -1,1 +1,1 @@
-hi
+Sample page

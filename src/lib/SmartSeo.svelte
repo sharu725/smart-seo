@@ -9,17 +9,14 @@
   }} */
   let { SITE_TITLE = "", SITE_URL = "" } = $props();
 
-  let page_param_name = $derived(Object.values(page?.params));
-  let page_route_name = $derived(page.route.id?.split("/").slice(1));
+  let page_path_name = $derived(page.url.pathname.split("/"));
   let is_homepage = $derived(page.route.id === "/");
 
   const get_title = () => {
-    if (page_param_name?.lenth) {
-      return make_title(page_param_name.reverse().join(" | "));
-    } else if (page_route_name) {
-      return make_title(page_route_name.reverse().join(" | "));
-    } else if (is_homepage) {
+    if (is_homepage) {
       return "Home";
+    } else if (page_path_name) {
+      return make_title(page_path_name.reverse().join(" | "));
     } else {
       return "";
     }
@@ -27,7 +24,7 @@
 
   const get_description = () => {
     if (get_title()) {
-      return `This is ${get_title()} page${SITE_TITLE ? ` from ${SITE_TITLE}` : ""}.`;
+      return `${get_title().replaceAll(" | ", " ")} page${SITE_TITLE ? ` from ${SITE_TITLE}` : ""}.`;
     } else {
       return "";
     }
@@ -45,14 +42,17 @@
   };
 
   let final_title = $derived(get_title());
-  let final_description = $derived(get_description());
+  let final_description = $derived(get_description().replaceAll("  ", " "));
   let final_canonical = $derived(get_canonical());
 </script>
 
 <svelte:head>
   {#if final_title}
     <title>{final_title}{SITE_TITLE ? ` | ${SITE_TITLE}` : ""}</title>
-    <meta property="og:title" content={final_title} />
+    <meta
+      property="og:title"
+      content="{final_title}{SITE_TITLE ? ` | ${SITE_TITLE}` : ''}"
+    />
   {/if}
   {#if final_description}
     <meta name="description" content={final_description} />

@@ -1,6 +1,7 @@
 {
   "name": "svelte-smart-seo",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
@@ -9,6 +10,11 @@
     "prepublishOnly": "npm run package",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
+  },
+  "homepage": "https://smart-seo.sveltethemes.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharu725/smart-seo.git"
   },
   "files": [
     "dist",
@@ -36,6 +42,7 @@
     "@sveltejs/kit": "^2.16.1",
     "@sveltejs/package": "^2.3.9",
     "@sveltejs/vite-plugin-svelte": "^4.0.4",
+    "mdsvex": "^0.12.3",
     "publint": "^0.2.12",
     "svelte": "^5.19.5",
     "svelte-check": "^4.1.4",

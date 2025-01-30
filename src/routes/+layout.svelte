@@ -6,7 +6,7 @@
   let { children } = $props();
 </script>
 
-<Seo SITE_TITLE="SuperSite" SITE_URL="https://something.com/" />
+<Seo SITE_TITLE="Smart Seo" SITE_URL="https://smart-seo.sveltethemes.dev" />
 <div class="container">
   {@render children()}
 </div>

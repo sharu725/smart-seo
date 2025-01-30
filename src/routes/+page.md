@@ -8,6 +8,8 @@ Use this on non-critical projects where you do not want to add basic SEO tags yo
 
 If you want SEO on critical websites, then consider using [svelte-seo](https://github.com/artiebits/svelte-seo).
 
+**This website uses smart-seo**
+
 ## Installation
 
 ```bash

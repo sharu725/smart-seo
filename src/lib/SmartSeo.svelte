@@ -14,7 +14,7 @@
 
   const get_title = () => {
     if (is_homepage) {
-      return "Home";
+      return "Home | ";
     } else if (page_path_name) {
       return make_title(page_path_name.reverse().join(" | "));
     } else {
@@ -48,10 +48,10 @@
 
 <svelte:head>
   {#if final_title}
-    <title>{final_title}{SITE_TITLE ? ` | ${SITE_TITLE}` : ""}</title>
+    <title>{final_title}{SITE_TITLE ? `${SITE_TITLE}` : ""}</title>
     <meta
       property="og:title"
-      content="{final_title}{SITE_TITLE ? ` | ${SITE_TITLE}` : ''}"
+      content="{final_title}{SITE_TITLE ? `${SITE_TITLE}` : ''}"
     />
   {/if}
   {#if final_description}

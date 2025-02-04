@@ -15,7 +15,16 @@
       <a href="/about">About</a>
     </li>
     <li>
+      <a href="/about/me">About/me</a>
+    </li>
+    <li>
       <a href="/blog">Blog</a>
+    </li>
+    <li>
+      <a href="/blog/a">Blog/a</a>
+    </li>
+    <li>
+      <a href="/blog/a/b">Blog/a/b</a>
     </li>
   </ul>
 </nav>

@@ -1,6 +1,7 @@
 <script>
   import getHeadTags from "$lib/get_meta_tags.js";
   import { onMount } from "svelte";
+  import Prism from "../../../Prism.svelte";
 
   let headContent = $state("");
 
@@ -11,11 +12,6 @@
 
 Sample page
 
-<pre class="language-html">
-    {headContent}</pre>
-
-<style>
-  pre {
-    white-space: pre-line !important;
-  }
-</style>
+{#if headContent}
+  <Prism code={headContent} />
+{/if}

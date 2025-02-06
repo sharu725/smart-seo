@@ -20,7 +20,7 @@ You should be using it only at `routes/+layout.svelte`, nowhere else.
 
 ```svelte
 <script>
-  import SmartSeo from "$lib/SmartSeo.svelte";
+  import SmartSeo from "svelte-smart-seo";
 </script>
 
 <SmartSeo SITE_TITLE="SuperSite" SITE_URL="https://example.com" />
